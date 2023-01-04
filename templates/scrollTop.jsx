@@ -1,4 +1,3 @@
-import Adapt from 'core/js/adapt';
 import React, { useEffect, useState } from 'react';
 import { classes } from 'core/js/reactHelpers';
 
@@ -21,7 +20,7 @@ export default function NavigationLogo(props) {
 
   }, [target]);
 
-  const scrollToTop = () => Adapt.scrollTo(target, { duration: 400 });
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <button
