@@ -1,0 +1,44 @@
+{
+  "$anchor": "scrollTop-course",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "course"
+    },
+    "with": {
+      "properties": {
+        "_scrollTop": {
+          "type": "object",
+          "title": "ScrollTop",
+          "default": {},
+          "required": [],
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Enable ScrollTop",
+              "description": "Controls whether the ScrollTop extension is enabled or disabled",
+              "default": true
+            },
+            "_button": {
+              "type": "object",
+              "title": "Button",
+              "default": {},
+              "properties": {
+                "ariaLabel": {
+                  "type": "string",
+                  "title": "Aria label",
+                  "default": "Scroll to top",
+                  "description": "Aria label for the button",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,47 +1,22 @@
-define([
-    "coreJS/adapt"
-], function (Adapt) {
-    var ScrollTop = Backbone.View.extend({
-        events: {
-            'click button.scrollTop': 'gotoTop'
-        },
-        initialize: function () {
-            this.setLayout();
-        },
-        setLayout: function () {
-            var template = Handlebars.templates['scrollTop'];
+import Adapt from 'core/js/adapt';
+import ScrollTopView from './ScrollTopView';
 
-            this.$el.prepend(template());
-            var self = this;
-            $(window).bind('scroll', function (ev) {
-                self.show();
-            });
-        },
+class ScrollTop extends Backbone.Controller {
 
-        show: function () {
-            if (document.body.scrollTop > 64 || document.documentElement.scrollTop > 64) {
-                this.$el.find('.scrollTop').show()
-            } else {
-                this.$el.find('.scrollTop').hide()
-            }
+  initialize() {
+    this.listenTo(Adapt, 'pageView:postRender menuView:postRender', this.onPageRender);
+  }
 
-        },
-        gotoTop: function () {
-                
-            Adapt.scrollTo('#wrapper', { duration: 500 })
-        }
-    })
-    function init(view) {
+  onPageRender(view) {
+    if (this.scrollTop) this.scrollTop.remove();
 
-        var _scrollTop = view.model.get("_scrollTop");
+    const config = Adapt.course.get('_scrollTop');
+    if (!config || !config._isEnabled) return;
 
-        if (_scrollTop && _scrollTop._isEnabled) {
-            new ScrollTop({ model: view.model, el: view.$el });
+    const model = new Backbone.Model(config);
+    this.scrollTop = new ScrollTopView({ model });
 
-        }
-    }
-
-    Adapt
-        .on('pageView:postRender', init)
-
-});
+    this.scrollTop.$el.insertAfter(view.$el);
+  }
+};
+export default new ScrollTop();

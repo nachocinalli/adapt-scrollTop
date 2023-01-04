@@ -8,7 +8,10 @@
   "displayName": "ScrollTop",
   "description": "An extension which provides basic scrollTop function",
   "main": "/js/adapt-scrollTop.js",
-  "keywords": ["adapt-plugin", "adapt-extension"],
+  "keywords": [
+    "adapt-plugin",
+    "adapt-extension"
+  ],
   "license": "GPL-3.0",
   "targetAttribute": "_scrollTop"
 }

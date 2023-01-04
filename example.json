@@ -1,4 +1,7 @@
-//contentObjects.json
+//course.json
 "_scrollTop":{
-    "_isEnabled": true
+    "_isEnabled": true,
+    "_button" : {
+        "arialLabel" : "scroll to top"
+    }
    }

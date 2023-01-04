@@ -1,53 +1,68 @@
 {
-  "type":"object",
-  "$schema": "http://json-schema.org/draft-04/schema",
-  "id": "http://jsonschema.net",
-  "required":false,
-  "properties":{
-    "pluginLocations": {
-      "type":"object",
-      "required":true,
-      "properties":{
-        "config": {
-          "type":"object"       
-        },
-        "course": {
-          "type":"object"
-        },
-        "contentobject": {
-          "type":"object",
-             "properties":{
-            "_scrollTop": {
-              "legend" : "scrollTop",
-              "type":"object",
-              "required":false,
-              "properties": {
-                "_isEnabled": {
-                  "type":"boolean",
-                  "required":true,
-                  "title": "Enabled",
-                  "inputType" : {
-                      "type" : "Boolean",
-                      "options" : [ 
-                        true, 
-                        false
-                      ]
-                    }
-                }
-              }
-            }
-          }
-        },
-        "article": {
-          "type":"object"
-        },
-        "block": {
-          "type":"object"
-        },
-        "component": {
-          "type":"object"
-        }
-      }
-    }
-  }
+	"type": "object",
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"id": "http://jsonschema.net",
+	"required": false,
+	"properties": {
+		"pluginLocations": {
+			"type": "object",
+			"required": true,
+			"properties": {
+				"config": {
+					"type": "object"
+				},
+				"course": {
+					"type": "object",
+					"properties": {
+						"_scrollTop": {
+							"legend": "ScrollTop",
+							"type": "object",
+							"required": false,
+							"properties": {
+								"_isEnabled": {
+									"type": "boolean",
+									"required": true,
+									"title": "Enabled",
+									"inputType": {
+										"type": "Boolean",
+										"options": [
+											true,
+											false
+										]
+									}
+								},
+								"_button": {
+									"type": "object",
+									"required": false,
+									"title": "Button",
+									"properties": {
+										"ariaLabel": {
+											"type": "string",
+											"default": "Scroll to top",
+											"title": "Aria label",
+											"inputType": "Text",
+											"translatable": true,
+											"help": "Aria label for the button"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"contentobject": {
+					"type": "object"
+				},
+				"article": {
+					"type": "object"
+				},
+				"block": {
+					"type": "object"
+				},
+				"component": {
+					"type": "object"
+				}
+			}
+		}
+	}
 }
